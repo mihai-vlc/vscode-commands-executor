@@ -2,7 +2,7 @@
   "name": "vscode-commands-executor",
   "displayName": "Commands Executor",
   "description": "Enables the execution of vscode commands on open vscode via the vscode:// URI and keyboard shortcuts.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "ionutvmi",
   "engines": {
     "vscode": "^1.63.0"

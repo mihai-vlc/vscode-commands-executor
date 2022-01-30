@@ -76,7 +76,7 @@ Opens a list of files and optionally configures an editor layout.
 
 Parameters:
 | Parameter | Required | Description |
-|-----|-------|-----|
+|:-----|:-------|:-----|
 | data| Yes | Array of objects - contains the list of files that will be opened. <br/><br/>A file consists of the following:<br/> - `path` - full path to the document on the disk<br/>- `column` - The location of the files in the configured layout. Possible values are described in the `vscode.ViewColumn` |
 | layout | No | String - Triggers the following command before opening the files: `workbench.action.editorLayout<layout>` |
 | newWindow | No | Boolean - If false the files are opened in the topmost vscode window. <br/> If true it will first open a new window then open the files. |
@@ -87,7 +87,7 @@ Executes a sequence of pre-defined commands.
 
 Parameters:
 | Parameter | Required | Description |
-|-----|-------|-----|
+|:-----|:-------|:-----|
 | data| Yes | Array of objects - contains the list of commands to be executed. <br/><br/>A commands consists of the following:<br/> - `id` - Required - the id of the command that will be executed<br/>- `args` - Optional - The arguments of the command. |
 | newWindow | No | Boolean - If `false` the commands are executed in the topmost vscode window. <br/> If `true` it will first open a new window then open the files. |
 
