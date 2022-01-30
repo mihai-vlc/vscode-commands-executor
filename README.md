@@ -7,15 +7,11 @@ Enables the execution of vscode commands on open vscode via the vscode:// URI an
 ### Executing commands via the vscode:// URI
 
 ```sh
-code --open-url 'vscode://ionutvmi.vscode-commands-executor/runCommands?data=[{"id": "workbench.
-action.editorLayoutThreeRows"}, {"id": "workbench.action.files.newUntitledFile" }, { "id": "
-default:type", "args": { "text": "Very nice !" } }]'
+code --open-url 'vscode://ionutvmi.vscode-commands-executor/runCommands?data=[{"id": "workbench.action.editorLayoutThreeRows"}, {"id": "workbench.action.files.newUntitledFile"}, { "id": "default:type", "args": { "text": "Very nice !" } }]'
 
-code --open-url 'vscode://ionutvmi.vscode-commands-executor/openFiles?data=[{"path": "C:/tmp/tes
-t.txt" }]&layout=TwoColumns'
+code --open-url 'vscode://ionutvmi.vscode-commands-executor/openFiles?data=[{"path": "C:/tmp/test.txt" }]&layout=TwoColumns'
 
-code --open-url 'vscode://ionutvmi.vscode-commands-executor/openFiles?data=[{"path": "C:/t
-mp/test.txt", "column": "Two" }]&layout=TwoColumns&newWindow=true'
+code --open-url 'vscode://ionutvmi.vscode-commands-executor/openFiles?data=[{"path": "C:/tmp/test.txt", "column": "Two" }]&layout=TwoColumns&newWindow=true'
 
 ```
 
