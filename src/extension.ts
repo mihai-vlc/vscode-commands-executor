@@ -20,8 +20,17 @@ export async function activate(context: vscode.ExtensionContext) {
   uriHandler.register();
 
   vscode.commands.registerCommand("vscode-commands-executor.run", (args) => {
-    commandsProcessor.parseCommand(args);
-    commandsProcessor.executeCommands();
+    if (args && args.args && args.args.newWindow) {
+      context.globalState.update("postponedCommand", args);
+
+      // doing this to allow the new window to take the focus
+      setTimeout(() => {
+        vscode.commands.executeCommand("workbench.action.newWindow");
+      }, 200);
+    } else {
+      commandsProcessor.parseCommand(args);
+      commandsProcessor.executeCommands();
+    }
   });
 }
 

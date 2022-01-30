@@ -39,7 +39,11 @@ class CustomUriHandler implements vscode.UriHandler {
 
     if (args.newWindow) {
       this.context.globalState.update("postponedCommand", commandData);
-      vscode.commands.executeCommand("workbench.action.newWindow");
+
+      // doing this to allow the new window to take the focus
+      setTimeout(() => {
+        vscode.commands.executeCommand("workbench.action.newWindow");
+      }, 200);
     } else {
       this.commandsProcessor.parseCommand(commandData);
       this.commandsProcessor.executeCommands();
