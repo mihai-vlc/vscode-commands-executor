@@ -6,8 +6,9 @@ export default class VSCodeCommand implements Command {
 
   async execute() {
     if (this.args) {
-      return vscode.commands.executeCommand(this.id, this.args);
+      await vscode.commands.executeCommand(this.id, this.args);
     }
-    return vscode.commands.executeCommand(this.id);
+
+    await vscode.commands.executeCommand(this.id);
   }
 }

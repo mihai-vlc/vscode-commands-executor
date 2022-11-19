@@ -15,6 +15,16 @@ code --open-url 'vscode://ionutvmi.vscode-commands-executor/openFiles?data=[{"pa
 
 ```
 
+Depending on what terminal you are using you might need to url encode the data:
+
+```powershell
+# To work correctly in powershell
+code --open-url 'vscode://ionutvmi.vscode-commands-executor/runCommands?data=%5B%7B%22id%22%3A%20%22workbench.action.editorLayoutThreeRows%22%7D%2C%20%7B%22id%22%3A%20%22workbench.action.files.newUntitledFile%22%7D%2C%20%7B%20%22id%22%3A%20%22default%3Atype%22%2C%20%22args%22%3A%20%7B%20%22text%22%3A%20%22Very%20nice%20%21%22%20%7D%20%7D%5D'
+
+code --open-url """vscode://ionutvmi.vscode-commands-executor/openFiles?data=%5B%7B%22path%22%3A%20%22C%3A%2Ftmp%2Ftest.txt%22%20%7D%5D&layout=TwoColumns"""
+
+```
+
 ### Executing commands via custom keyboard bindings
 
 To register custom keyboard shortcuts for a groups of commands follow the examples below.
@@ -100,4 +110,4 @@ Initial Release
 Mihai Ionut Vilcu
 
 - [github/ionutvmi](https://github.com/ionutvmi)
-- [twitter/mihaivlc93](http://twitter.com/mihaivlc93)
+- [twitter/mihai_vlc](http://twitter.com/mihai_vlc)
