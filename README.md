@@ -29,7 +29,7 @@ code --open-url """vscode://ionutvmi.vscode-commands-executor/openFiles?data=%5B
 
 To register custom keyboard shortcuts for a groups of commands follow the examples below.
 
-```json
+```jsonc
 [
   // keybindings.json
   {
