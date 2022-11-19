@@ -32,7 +32,8 @@ export default class StartupRule {
           }
 
           return workspaceFolders.some((folder) => {
-            const folderMatches = folder.uri.fsPath.match(/([^\/]*)\/*$/);
+            const folderMatches =
+              folder.uri.fsPath.match(/([^\\\/]+)(\\|\/)*$/);
             const match = folderMatches && folderMatches[1];
             return match && match === args[0];
           });
