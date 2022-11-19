@@ -57,9 +57,9 @@ export default class StartupRule {
       vscode.window.showInformationMessage(this.config.message);
     }
 
-    this.config.commands.forEach(async (command) => {
+    for (const command of this.config.commands) {
       const args = command.args || [];
       await vscode.commands.executeCommand(command.id, ...args);
-    });
+    }
   }
 }
