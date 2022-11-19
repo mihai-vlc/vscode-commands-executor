@@ -1,8 +1,8 @@
 # Change Log
 
-All notable changes to the "vscode-commands-executor" extension will be documented in this file.
+## [1.1.0]
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+- Implemented support for startup commands executions.
 
 ## [1.0.0]
 

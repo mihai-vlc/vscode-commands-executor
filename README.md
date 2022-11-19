@@ -1,6 +1,7 @@
 # VSCode Commands Executor
 
-Enables the execution of vscode commands on open vscode via the vscode:// URI and keyboard shortcuts.
+Enables the execution of vscode commands on open startup vscode via the vscode:// URI,
+keyboard shortcuts and based on workspace conditions
 
 ## Features
 
@@ -99,9 +100,107 @@ Parameters:
 | data      | Yes      | Array of objects - contains the list of commands to be executed. <br/><br/>A commands consists of the following:<br/> - `id` - Required - the id of the command that will be executed<br/>- `args` - Optional - The arguments of the command. |
 | newWindow | No       | Boolean - If `false` the commands are executed in the topmost vscode window. <br/> If `true` it will first open a new window then open the files.                                                                                             |
 
+## Executing commands on vscode startup (initial open of vscode)
+
+```jsonc
+// settings.json
+// run a command on every startup
+  "vscode-commands-executor.startupRules": [
+        {
+            "commands": [
+                { "id": "workbench.action.files.newUntitledFile" }
+            ],
+            "message": "Opening untitled file",
+            "conditions": ["always"]
+        }
+  ]
+```
+
+```jsonc
+// settings.json
+// run a sequence of commands on startup if the workspace contains test.json
+  "vscode-commands-executor.startupRules": [
+        {
+            "commands": [
+                { "id": "workbench.action.files.newUntitledFile" },
+                {
+                    "id": "default:type",
+                    "args": [{
+                        "text": "Much wow!\nWhat a time to be alive!"
+                    }]
+                }
+            ],
+            "message": "Found test.json processing...",
+            "conditions": ["hasFile: **/test.json"]
+        }
+  ]
+```
+
+```jsonc
+// settings.json
+// run a sequence of commands on startup if the one of the workspace folders is test
+  "vscode-commands-executor.startupRules": [
+      {
+          "commands": [
+              { "id": "workbench.action.files.newUntitledFile" },
+              {
+                  "id": "default:type",
+                  "args": [{
+                      "text": "Initialization complete !"
+                  }]
+              }
+          ],
+          "message": "Found workspace folder processing...",
+          // both conditions need to be true for the commands to run
+          "conditions": [
+              "hasWorkspaceFolder: test",
+              "hasFile: **/test.reg"
+          ]
+      }
+  ]
+```
+
+```jsonc
+// settings.json
+// run a command with complex arguments, no notification is displayed if the message is empty/not specified
+  "vscode-commands-executor.startupRules": [
+      {
+          "conditions": ["always"],
+          "commands": [
+              {
+                  "id": "script-plus.commands.scriptControl.execute",
+                  "args": [
+                      {
+                          "name": "show-info-message",
+                          "description": "",
+                          "lang": "ts",
+                          "argumentConfig": {}
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+```
+
+## Startup rules structure
+
+| Property   | Description                                                                                                                 |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
+| conditions | Array of strings, supported values:<br/> - always<br/> - never<br/> - hasFile: \*\*/test.reg<br/>- hasWorkspaceFolder: test |
+| commands   | Array of objects (commands). Specifies the sequence of commands that will be executed if the condition is true.             |
+| args       | Array of any. Represents the arguments to the command                                                                       |
+| message    | String. Represents the notification message displayed if the commands will execute.                                         |
+
 ## Release Notes
 
-#### 30-Jan-2022
+[CHANGELOG.md](./CHANGELOG.md)
+
+#### 1.1.0 - 19-Nov-2022
+
+Implemented support for startup commands executions.
+
+#### 1.0.0 - 30-Jan-2022
 
 Initial Release
 

@@ -1,8 +1,8 @@
 {
   "name": "vscode-commands-executor",
   "displayName": "Commands Executor",
-  "description": "Enables the execution of vscode commands on open vscode via the vscode:// URI and keyboard shortcuts.",
-  "version": "1.0.1",
+  "description": "Enables the execution of vscode commands on open startup vscode via the vscode:// URI, keyboard shortcuts and based on workspace conditions.",
+  "version": "1.1.0",
   "publisher": "ionutvmi",
   "engines": {
     "vscode": "^1.63.0"
@@ -59,7 +59,7 @@
                 "type": [
                   "array"
                 ],
-                "description": "Conditions to match against. See documentation for possible condition"
+                "description": "List of conditions to match against. Supported: always, never, hasFile: **/file.txt, hasWorkspaceFolder: my-project"
               },
               "message": {
                 "type": "string",
