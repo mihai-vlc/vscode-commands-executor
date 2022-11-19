@@ -23,6 +23,54 @@
   "activationEvents": [
     "onStartupFinished"
   ],
+  "contributes": {
+    "configuration": {
+      "title": "Commands Executor",
+      "description": "Configurations for the command executor execution.",
+      "type": "object",
+      "properties": {
+        "vscode-commands-executor.startupRules": {
+          "type": "array",
+          "title": "Startup Commands Rules",
+          "default": [],
+          "items": {
+            "type": "object",
+            "properties": {
+              "commands": {
+                "type": [
+                  "array"
+                ],
+                "description": "Commands to run when the rule is matched",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The id of the command that will be executed"
+                    },
+                    "args": {
+                      "type": "array",
+                      "description": "The arguments that will be passed to the command"
+                    }
+                  }
+                }
+              },
+              "conditions": {
+                "type": [
+                  "array"
+                ],
+                "description": "Conditions to match against. See documentation for possible condition"
+              },
+              "message": {
+                "type": "string",
+                "description": "A descriptive message to show when the condition is met."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "bugs": {
     "url": "https://github.com/ionutvmi/vscode-commands-executor/issues",
     "email": "ionutvmi@gmail.com"

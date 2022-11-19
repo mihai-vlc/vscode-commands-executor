@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import CommandsProcessor from "./CommandsProcessor";
+import StartupProcessor from "./startup/StartupProcessor";
 import CustomUriHandler from "./UriHandler";
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -34,6 +35,10 @@ export async function activate(context: vscode.ExtensionContext) {
       }
     })
   );
+
+  const startupProcessor = new StartupProcessor();
+  startupProcessor.readConfigurations();
+  startupProcessor.runCommands();
 }
 
 // this method is called when your extension is deactivated
